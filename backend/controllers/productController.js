@@ -15,6 +15,10 @@ exports.getAllProducts = async (req, res) => {
   res.status(200).json({ success: true, product });
 };
 
+exports.getProduct = async(req,res,next)=>{
+  const product = await Product.findById(req.params.id);
+  res.status(200).json({success:true,product})
+}
 
 //Update Product-- Admin
 exports.updateProduct = async(err,req,res,next)=>{
@@ -46,7 +50,7 @@ exports.deleteProduct = async(req,res)=>{
         })
     }
 
-    await product.remove();
+    await product.remove;
 
     res.status(200).json({
         success:true,
